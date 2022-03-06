@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.okarin.App">
+  <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1269" height="440"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <toolbar id="d4f25">
+        <constraints border-constraint="North"/>
+        <properties>
+          <floatable value="false"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="b5277" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <inheritsPopupMenu value="true"/>
+              <maximumSize width="200" height="2147483647"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="eee82" class="javax.swing.JButton" binding="segmentButton">
+                <constraints/>
+                <properties>
+                  <text value="Segment"/>
+                </properties>
+              </component>
+              <component id="ad86e" class="javax.swing.JButton" binding="rayButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Ray"/>
+                </properties>
+              </component>
+              <component id="eb2b2" class="javax.swing.JButton" binding="lineButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Line"/>
+                </properties>
+              </component>
+              <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Move"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="aac2c" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <maximumSize width="320" height="2147483647"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="9952f" class="javax.swing.JSlider" binding="thicknessSlider">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <maximum value="10"/>
+                  <minimum value="1"/>
+                  <value value="1"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="bd4fc" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a4a06" class="javax.swing.JLabel">
+                <constraints/>
+                <properties>
+                  <text value="Frame color"/>
+                </properties>
+              </component>
+              <grid id="42e3a" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="7e488" class="javax.swing.JSlider" binding="frameRedSlider">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                  <component id="9b27e" class="javax.swing.JSlider" binding="frameGreenSlider">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                  <component id="6bc7b" class="javax.swing.JSlider" binding="frameBlueSlider">
+                    <constraints border-constraint="South"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="83082" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="6830b" class="javax.swing.JLabel">
+                <constraints/>
+                <properties>
+                  <text value="Fill color"/>
+                </properties>
+              </component>
+              <grid id="85007" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="d17df" class="javax.swing.JSlider" binding="fillRedSlider">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                  <component id="2051d" class="javax.swing.JSlider" binding="fillGreenSlider">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                  <component id="a3751" class="javax.swing.JSlider" binding="fillBlueSlider">
+                    <constraints border-constraint="South"/>
+                    <properties>
+                      <maximum value="255"/>
+                      <value value="0"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </toolbar>
+      <grid id="823f8" binding="canvas" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="shapesButtonGroup">
+      <member id="6c1e0"/>
+      <member id="5b569"/>
+      <member id="5e9b9"/>
+      <member id="e4f2f"/>
+      <member id="597aa"/>
+      <member id="4e305"/>
+      <member id="877c4"/>
+      <member id="c266c"/>
+      <member id="3e585"/>
+      <member id="f28c7"/>
+      <member id="454f2"/>
+    </group>
+  </buttonGroups>
+</form>
