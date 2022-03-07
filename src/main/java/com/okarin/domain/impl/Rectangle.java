@@ -11,8 +11,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-import static java.lang.Math.*;
-
 @Getter
 @Setter
 @ToString
@@ -52,15 +50,19 @@ public class Rectangle extends Shape2D {
 
     public void setCorner(Point point) {
         this.corner = point;
-        int deltaX = getLocation().x - point.x;
+        normalizeCorner();
+        width = 2 * (getLocation().x - corner.x);
+        height = 2 * (getLocation().y - corner.y);
+    }
+
+    protected void normalizeCorner() {
+        int deltaX = getLocation().x - corner.x;
         if (deltaX < 0) {
             corner.translate(2 * deltaX, 0);
         }
-        int deltaY = getLocation().y - point.y;
+        int deltaY = getLocation().y - corner.y;
         if (deltaY < 0) {
             corner.translate(0, 2 * deltaY);
         }
-        width = 2 * (getLocation().x - corner.x);
-        height = 2 * (getLocation().y - corner.y);
     }
 }

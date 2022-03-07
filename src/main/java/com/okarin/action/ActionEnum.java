@@ -6,5 +6,6 @@ public enum ActionEnum {
     LINE,
     RECTANGLE,
     ELLIPSE,
+    CIRCLE,
     MOVE
 }

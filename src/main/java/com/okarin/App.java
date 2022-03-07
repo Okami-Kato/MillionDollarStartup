@@ -50,6 +50,7 @@ public class App extends JFrame {
     private JSlider fillGreenSlider;
     private JSlider fillBlueSlider;
     private JButton ellipseButton;
+    private JButton circleButton;
 
     private Optional<Shape> currentShape = Optional.empty();
 
@@ -124,6 +125,7 @@ public class App extends JFrame {
         moveButton.addActionListener(e -> action = MOVE);
         rectangleButton.addActionListener(e -> action = RECTANGLE);
         ellipseButton.addActionListener(e -> action = ELLIPSE);
+        circleButton.addActionListener(e -> action = CIRCLE);
 
         frameRedSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
         frameGreenSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GREEN), "Green"));

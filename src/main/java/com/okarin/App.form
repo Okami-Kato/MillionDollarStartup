@@ -52,6 +52,12 @@
                   <text value="Ellipse"/>
                 </properties>
               </component>
+              <component id="f46fb" class="javax.swing.JButton" binding="circleButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Circle"/>
+                </properties>
+              </component>
               <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
                 <constraints/>
                 <properties>
