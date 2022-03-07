@@ -1,6 +1,8 @@
-package com.okarin.domain;
+package com.okarin.domain.impl;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -8,6 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 
 @Getter
+@ToString
+@EqualsAndHashCode(callSuper = true)
 public class Line extends Ray {
     private Point startPoint;
 

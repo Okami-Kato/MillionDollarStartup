@@ -1,19 +1,22 @@
-package com.okarin.domain;
+package com.okarin.domain.impl;
 
+import com.okarin.domain.AbstractShape;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-@EqualsAndHashCode(callSuper = true)
 @Getter
 @Setter
-public class Segment extends AbstractShape{
+@ToString
+@EqualsAndHashCode(callSuper = true)
+public class Segment extends AbstractShape {
     private Point endPoint;
 
     @Builder
@@ -32,8 +35,7 @@ public class Segment extends AbstractShape{
 
     @Override
     public void move(Point point) {
-        Point location = getLocation();
-        setEndPoint(new Point(endPoint.x + point.x - location.x, endPoint.y + point.y - location.y));
+        setEndPoint(new Point(endPoint.x + point.x - getLocation().x, endPoint.y + point.y - getLocation().y));
         super.move(point);
     }
 

@@ -40,6 +40,12 @@
                   <text value="Line"/>
                 </properties>
               </component>
+              <component id="97758" class="javax.swing.JButton" binding="rectangleButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Rectangle"/>
+                </properties>
+              </component>
               <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
                 <constraints/>
                 <properties>

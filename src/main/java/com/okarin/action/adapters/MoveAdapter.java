@@ -2,6 +2,7 @@ package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
 import com.okarin.domain.Shape;
+import com.okarin.event.RepaintEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @Service
-public class MoveAction extends MouseAdapter {
+public class MoveAdapter extends MouseAdapter {
     @Autowired
     private List<Shape> shapes;
 
@@ -24,13 +25,16 @@ public class MoveAction extends MouseAdapter {
     private Supplier<ActionEnum> currentAction;
 
     @Autowired
-    private JFrame frame;
-
-    @Autowired
     private Supplier<Optional<Shape>> currentShapeSupplier;
 
     @Autowired
     private Consumer<Shape> currentShapeConsumer;
+
+    @Autowired
+    private JFrame frame;
+
+    @Autowired
+    private RepaintEventPublisher repaintEventPublisher;
 
     private boolean isDragged = false;
 
@@ -59,7 +63,7 @@ public class MoveAction extends MouseAdapter {
         if (currentAction.get() == ActionEnum.MOVE) {
             isDragged = false;
         }
-        currentShapeConsumer.accept(null);
+//        currentShapeConsumer.accept(null);
     }
 
     @Override
@@ -68,7 +72,7 @@ public class MoveAction extends MouseAdapter {
             Optional<Shape> shape = currentShapeSupplier.get();
             shape.ifPresent(s -> s.move(e.getPoint()));
         }
-        frame.repaint();
+        repaintEventPublisher.publish();
     }
 
     @Override

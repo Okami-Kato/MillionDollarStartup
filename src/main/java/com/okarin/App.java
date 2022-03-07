@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
@@ -28,6 +27,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static com.okarin.action.ActionEnum.*;
+
 @SpringBootApplication
 public class App extends JFrame {
     private JPanel rootPanel;
@@ -35,6 +36,8 @@ public class App extends JFrame {
 
     private JButton segmentButton;
     private JButton rayButton;
+    private JButton lineButton;
+    private JButton rectangleButton;
     private JButton moveButton;
 
     private JSlider thicknessSlider;
@@ -46,7 +49,6 @@ public class App extends JFrame {
     private JSlider fillRedSlider;
     private JSlider fillGreenSlider;
     private JSlider fillBlueSlider;
-    private JButton lineButton;
 
     private Optional<Shape> currentShape = Optional.empty();
 
@@ -115,10 +117,11 @@ public class App extends JFrame {
 
     @PostConstruct
     private void setUpGUI() {
-        segmentButton.addActionListener(e -> action = ActionEnum.SEGMENT);
-        rayButton.addActionListener(e -> action = ActionEnum.RAY);
-        lineButton.addActionListener(e -> action = ActionEnum.LINE);
-        moveButton.addActionListener(e -> action = ActionEnum.MOVE);
+        segmentButton.addActionListener(e -> action = SEGMENT);
+        rayButton.addActionListener(e -> action = RAY);
+        lineButton.addActionListener(e -> action = LINE);
+        moveButton.addActionListener(e -> action = MOVE);
+        rectangleButton.addActionListener(e -> action = RECTANGLE);
 
         frameRedSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
         frameGreenSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GREEN), "Green"));

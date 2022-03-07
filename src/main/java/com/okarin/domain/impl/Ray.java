@@ -1,10 +1,15 @@
-package com.okarin.domain;
+package com.okarin.domain.impl;
+
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.awt.Color;
 import java.awt.Point;
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
+@ToString
+@EqualsAndHashCode(callSuper = true)
 public class Ray extends Segment {
     public Ray(Point location, Point endPoint, Integer frameThickness, Color frameColor) {
         super(location, extendToWindowBorder(location, endPoint), frameThickness, frameColor);

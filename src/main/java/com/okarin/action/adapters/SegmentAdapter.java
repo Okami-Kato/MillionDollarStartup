@@ -1,15 +1,15 @@
 package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
-import com.okarin.domain.Line;
-import com.okarin.domain.Ray;
-import com.okarin.domain.Segment;
+import com.okarin.domain.impl.Line;
+import com.okarin.domain.impl.Ray;
+import com.okarin.domain.impl.Segment;
 import com.okarin.domain.Shape;
+import com.okarin.event.RepaintEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @Service
-public class SegmentAction extends MouseAdapter {
+public class SegmentAdapter extends MouseAdapter {
     @Autowired
     @Qualifier("frame")
     private Supplier<Color> frameColor;
@@ -40,7 +40,7 @@ public class SegmentAction extends MouseAdapter {
     private Consumer<Shape> currentShapeConsumer;
 
     @Autowired
-    private JFrame frame;
+    private RepaintEventPublisher repaintEventPublisher;
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -56,7 +56,7 @@ public class SegmentAction extends MouseAdapter {
         if (newShape != null) {
             shapes.add(newShape);
             currentShapeConsumer.accept(newShape);
-            frame.repaint();
+            repaintEventPublisher.publish();
         }
     }
 
@@ -66,7 +66,7 @@ public class SegmentAction extends MouseAdapter {
         if (action == ActionEnum.SEGMENT || action == ActionEnum.LINE || action == ActionEnum.RAY) {
             Optional<Shape> currentShape = currentShapeSupplier.get();
             currentShape.ifPresent(s -> ((Segment) s).setEndPoint(e.getPoint()));
-            frame.repaint();
+            repaintEventPublisher.publish();
         }
     }
 }
