@@ -46,6 +46,12 @@
                   <text value="Rectangle"/>
                 </properties>
               </component>
+              <component id="ef777" class="javax.swing.JButton" binding="ellipseButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Ellipse"/>
+                </properties>
+              </component>
               <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
                 <constraints/>
                 <properties>

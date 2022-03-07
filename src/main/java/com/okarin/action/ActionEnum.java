@@ -5,5 +5,6 @@ public enum ActionEnum {
     RAY,
     LINE,
     RECTANGLE,
+    ELLIPSE,
     MOVE
 }

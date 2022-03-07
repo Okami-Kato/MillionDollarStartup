@@ -2,6 +2,7 @@ package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
 import com.okarin.domain.Shape;
+import com.okarin.domain.impl.Ellipse;
 import com.okarin.domain.impl.Rectangle;
 import com.okarin.event.RepaintEventPublisher;
 import org.slf4j.Logger;
@@ -54,6 +55,7 @@ public class RectangleAdapter extends MouseAdapter {
         final Color fillColor = this.fillColor.get();
         Shape newShape = switch (action) {
             case RECTANGLE -> new Rectangle(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
+            case ELLIPSE -> new Ellipse(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
             default -> null;
         };
         if (newShape != null) {
@@ -66,19 +68,10 @@ public class RectangleAdapter extends MouseAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         ActionEnum action = currentAction.get();
-        if (action == ActionEnum.RECTANGLE) {
+        if (action == ActionEnum.RECTANGLE || action == ActionEnum.ELLIPSE) {
             Optional<Shape> currentShape = currentShapeSupplier.get();
             currentShape.ifPresent(s -> ((Rectangle) s).setCorner(e.getPoint()));
             repaintEventPublisher.publish();
-        }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        ActionEnum action = currentAction.get();
-        if (action == ActionEnum.RECTANGLE) {
-            Optional<Shape> currentShape = currentShapeSupplier.get();
-            currentShape.ifPresent(s -> ((Rectangle) s).normalize());
         }
     }
 }

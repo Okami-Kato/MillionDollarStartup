@@ -20,13 +20,9 @@ import static java.lang.Math.*;
 public class Rectangle extends Shape2D {
     private Point corner;
 
-    private static Point getLeftUpperCorner(Point firstCorner, Point secondCorner) {
-        return new Point(min(firstCorner.x, secondCorner.x), min(firstCorner.y, secondCorner.y));
-    }
+    private int width;
 
-    private static Point getRightLowerCorner(Point firstCorner, Point secondCorner) {
-        return new Point(max(firstCorner.x, secondCorner.x), max(firstCorner.y, secondCorner.y));
-    }
+    private int height;
 
     public Rectangle(Point location, Point corner, Integer frameThickness, Color frameColor, Color fillColor) {
         super(location, frameThickness, frameColor, fillColor);
@@ -35,15 +31,11 @@ public class Rectangle extends Shape2D {
 
     @Override
     public void draw(Graphics2D g) {
-        Point leftUpperCorner = getLeftUpperCorner(getLocation(), corner);
-        Point rightLowerCorner = getRightLowerCorner(getLocation(), corner);
         g.setStroke(new BasicStroke(getFrameThickness()));
         g.setColor(getFillColor());
-        int width = rightLowerCorner.x - leftUpperCorner.x;
-        int height = rightLowerCorner.y - leftUpperCorner.y;
-        g.fillRect(leftUpperCorner.x, leftUpperCorner.y, width, height);
+        g.fillRect(corner.x, corner.y, width, height);
         g.setColor(getFrameColor());
-        g.drawRect(leftUpperCorner.x, leftUpperCorner.y, width, height);
+        g.drawRect(corner.x, corner.y, width, height);
     }
 
     @Override
@@ -54,13 +46,21 @@ public class Rectangle extends Shape2D {
 
     @Override
     public boolean contains(Point point) {
-        return point.x >= getLocation().x && point.x <= corner.x &&
-                point.y >= getLocation().y && point.y <= corner.y;
+        return corner.x <= point.x && point.x <= corner.x + width &&
+                corner.y <= point.y && point.y <= corner.y + height;
     }
 
-    public void normalize(){
-        Point tmp = getLocation();
-        setLocation(getLeftUpperCorner(tmp, corner));
-        this.corner = getRightLowerCorner(tmp, corner);
+    public void setCorner(Point point) {
+        this.corner = point;
+        int deltaX = getLocation().x - point.x;
+        if (deltaX < 0) {
+            corner.translate(2 * deltaX, 0);
+        }
+        int deltaY = getLocation().y - point.y;
+        if (deltaY < 0) {
+            corner.translate(0, 2 * deltaY);
+        }
+        width = 2 * (getLocation().x - corner.x);
+        height = 2 * (getLocation().y - corner.y);
     }
 }

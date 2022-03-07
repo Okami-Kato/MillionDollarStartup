@@ -49,6 +49,7 @@ public class App extends JFrame {
     private JSlider fillRedSlider;
     private JSlider fillGreenSlider;
     private JSlider fillBlueSlider;
+    private JButton ellipseButton;
 
     private Optional<Shape> currentShape = Optional.empty();
 
@@ -110,7 +111,7 @@ public class App extends JFrame {
     public App() {
         super("Just Draw It");
         setContentPane(rootPanel);
-        setSize(1000, 1000);
+        setSize(1500, 1000);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -122,6 +123,7 @@ public class App extends JFrame {
         lineButton.addActionListener(e -> action = LINE);
         moveButton.addActionListener(e -> action = MOVE);
         rectangleButton.addActionListener(e -> action = RECTANGLE);
+        ellipseButton.addActionListener(e -> action = ELLIPSE);
 
         frameRedSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
         frameGreenSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GREEN), "Green"));
