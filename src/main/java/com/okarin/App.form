@@ -64,6 +64,18 @@
                   <text value="Polygon"/>
                 </properties>
               </component>
+              <component id="3e490" class="javax.swing.JButton" binding="rhombusButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Rhombus"/>
+                </properties>
+              </component>
+              <component id="8b182" class="javax.swing.JButton" binding="triangleButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Triangle"/>
+                </properties>
+              </component>
               <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
                 <constraints/>
                 <properties>

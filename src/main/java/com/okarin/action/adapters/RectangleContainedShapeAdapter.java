@@ -1,10 +1,13 @@
 package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
+import com.okarin.domain.RectangleContainedShape;
 import com.okarin.domain.Shape;
 import com.okarin.domain.impl.Circle;
 import com.okarin.domain.impl.Ellipse;
 import com.okarin.domain.impl.Rectangle;
+import com.okarin.domain.impl.Rhombus;
+import com.okarin.domain.impl.Triangle;
 import com.okarin.event.RepaintEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +22,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @Service
-public class RectangleAdapter extends MouseAdapter {
+public class RectangleContainedShapeAdapter extends MouseAdapter {
     @Autowired
     @Qualifier("frame")
     private Supplier<Color> frameColor;
@@ -54,6 +57,8 @@ public class RectangleAdapter extends MouseAdapter {
         final Color fillColor = this.fillColor.get();
         Shape newShape = switch (action) {
             case RECTANGLE -> new Rectangle(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
+            case RHOMBUS -> new Rhombus(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
+            case TRIANGLE -> new Triangle(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
             case ELLIPSE -> new Ellipse(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
             case CIRCLE -> new Circle(e.getPoint(), e.getPoint(), frameThickness, frameColor, fillColor);
             default -> null;
@@ -68,9 +73,11 @@ public class RectangleAdapter extends MouseAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         ActionEnum action = currentAction.get();
-        if (action == ActionEnum.RECTANGLE || action == ActionEnum.ELLIPSE || action == ActionEnum.CIRCLE) {
+        if (action == ActionEnum.RECTANGLE || action == ActionEnum.ELLIPSE ||
+                action == ActionEnum.CIRCLE || action == ActionEnum.RHOMBUS ||
+                action == ActionEnum.TRIANGLE) {
             Optional<Shape> currentShape = currentShapeSupplier.get();
-            currentShape.ifPresent(s -> ((Rectangle) s).setCorner(e.getPoint()));
+            currentShape.ifPresent(s -> ((RectangleContainedShape) s).setCorner(e.getPoint()));
             repaintEventPublisher.publish();
         }
     }

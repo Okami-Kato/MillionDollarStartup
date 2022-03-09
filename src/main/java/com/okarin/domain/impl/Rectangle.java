@@ -1,5 +1,6 @@
 package com.okarin.domain.impl;
 
+import com.okarin.domain.RectangleContainedShape;
 import com.okarin.domain.Shape2D;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.awt.Point;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public class Rectangle extends Shape2D {
+public class Rectangle extends Shape2D implements RectangleContainedShape {
     private Point corner;
 
     private int width;
@@ -48,6 +49,7 @@ public class Rectangle extends Shape2D {
                 corner.y <= point.y && point.y <= corner.y + height;
     }
 
+    @Override
     public void setCorner(Point point) {
         this.corner = point;
         normalizeCorner();

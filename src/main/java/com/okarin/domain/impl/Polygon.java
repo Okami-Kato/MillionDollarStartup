@@ -11,11 +11,20 @@ import java.util.List;
 
 public class Polygon extends Shape2D {
 
-    private final List<Point> points = new ArrayList<>();
+    private List<Point> points;
+
+    public Polygon(Point location, int frameWidth, Color frameColor, Color fillColor) {
+        super(location, frameWidth, frameColor, fillColor);
+        points = new ArrayList<>(List.of(location));
+    }
 
     public Polygon(Point location, List<Point> points, int frameWidth, Color frameColor, Color fillColor) {
         super(location, frameWidth, frameColor, fillColor);
-        this.points.addAll(points);
+        this.points = new ArrayList<>(points);
+    }
+
+    public void setPoints(List<Point> points){
+        this.points = new ArrayList<>(points);
     }
 
     public void addPoint(Point point) {

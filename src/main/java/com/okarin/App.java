@@ -54,6 +54,8 @@ public class App extends JFrame {
     private JSlider fillGreenSlider;
     private JSlider fillBlueSlider;
     private JButton polygonButton;
+    private JButton rhombusButton;
+    private JButton triangleButton;
 
     private Optional<Shape> currentShape = Optional.empty();
 
@@ -114,7 +116,7 @@ public class App extends JFrame {
     public App() {
         super("Just Draw It");
         setContentPane(rootPanel);
-        setSize(1500, 1000);
+        setSize(1900, 1000);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -129,7 +131,9 @@ public class App extends JFrame {
                 rectangleButton,
                 ellipseButton,
                 circleButton,
-                polygonButton
+                polygonButton,
+                rhombusButton,
+                triangleButton
         )) {
             ActionEnum action = valueOf(b.getText().toUpperCase(Locale.ROOT));
             b.addActionListener(e -> {

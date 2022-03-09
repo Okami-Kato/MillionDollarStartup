@@ -51,7 +51,7 @@ public class PolygonAdapter extends MouseAdapter {
             if (currentShape.isPresent() && currentShape.get().getClass().equals(Polygon.class)) {
                 ((Polygon) currentShape.get()).addPoint(e.getPoint());
             } else {
-                Polygon polygon = new Polygon(e.getPoint(), List.of(e.getPoint()), frameThickness.get(), frameColor.get(), fillColor.get());
+                Polygon polygon = new Polygon(e.getPoint(), frameThickness.get(), frameColor.get(), fillColor.get());
                 shapes.add(polygon);
                 currentShapeConsumer.accept(polygon);
             }
