@@ -1,8 +1,5 @@
 package com.okarin.domain.impl;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import java.awt.Color;
 import java.awt.Point;
 
@@ -31,7 +28,7 @@ public class Ray extends Segment {
     }
 
     @Override
-    public void setEndPoint(Point endPoint){
+    public void setEndPoint(Point endPoint) {
         super.setEndPoint(extendToWindowBorder(getLocation(), endPoint));
     }
 }

@@ -29,13 +29,13 @@ public class Line extends Ray {
         startPoint = extendToWindowBorder(endPoint, getLocation());
     }
 
-    public void setStartPoint(Point startPoint){
+    public void setStartPoint(Point startPoint) {
         startPoint = extendToWindowBorder(getLocation(), startPoint);
         setEndPoint(extendToWindowBorder(startPoint, getLocation()));
     }
 
     @Override
-    public void draw(Graphics2D g){
+    public void draw(Graphics2D g) {
         g.setStroke(new BasicStroke(getFrameThickness()));
         g.setColor(getFrameColor());
         g.drawLine(startPoint.x, startPoint.y, getEndPoint().x, getEndPoint().y);

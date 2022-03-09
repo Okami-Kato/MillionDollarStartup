@@ -9,11 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -65,7 +62,7 @@ public class PolygonAdapter extends MouseAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         Optional<Shape> currentShape = currentShapeSupplier.get();
-        if (currentShape.isPresent() && currentAction.get() == ActionEnum.POLYGON){
+        if (currentShape.isPresent() && currentAction.get() == ActionEnum.POLYGON) {
             ((Polygon) currentShape.get()).setLastPoint(e.getPoint());
             repaintEventPublisher.publish();
         }

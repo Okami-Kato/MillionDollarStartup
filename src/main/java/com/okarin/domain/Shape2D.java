@@ -12,7 +12,7 @@ import java.awt.Point;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = true)
-public abstract class Shape2D extends AbstractShape{
+public abstract class Shape2D extends AbstractShape {
     private Color fillColor;
 
     public Shape2D(Point location, Integer frameThickness, Color frameColor, Color fillColor) {

@@ -1,10 +1,10 @@
 package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
+import com.okarin.domain.Shape;
 import com.okarin.domain.impl.Line;
 import com.okarin.domain.impl.Ray;
 import com.okarin.domain.impl.Segment;
-import com.okarin.domain.Shape;
 import com.okarin.event.RepaintEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

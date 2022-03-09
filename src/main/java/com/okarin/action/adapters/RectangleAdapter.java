@@ -6,8 +6,6 @@ import com.okarin.domain.impl.Circle;
 import com.okarin.domain.impl.Ellipse;
 import com.okarin.domain.impl.Rectangle;
 import com.okarin.event.RepaintEventPublisher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
