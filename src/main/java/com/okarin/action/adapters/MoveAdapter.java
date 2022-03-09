@@ -63,7 +63,6 @@ public class MoveAdapter extends MouseAdapter {
         if (currentAction.get() == ActionEnum.MOVE) {
             isDragged = false;
         }
-        currentShapeConsumer.accept(null);
     }
 
     @Override

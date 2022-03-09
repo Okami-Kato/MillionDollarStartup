@@ -9,9 +9,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-@Getter
-@ToString
-@EqualsAndHashCode(callSuper = true)
 public class Ellipse extends Rectangle {
     public Ellipse(Point location, Point corner, Integer frameThickness, Color frameColor, Color fillColor) {
         super(location, corner, frameThickness, frameColor, fillColor);

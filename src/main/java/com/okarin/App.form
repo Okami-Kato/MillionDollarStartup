@@ -58,6 +58,12 @@
                   <text value="Circle"/>
                 </properties>
               </component>
+              <component id="8d9a2" class="javax.swing.JButton" binding="polygonButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <text value="Polygon"/>
+                </properties>
+              </component>
               <component id="bf645" class="javax.swing.JButton" binding="moveButton" default-binding="true">
                 <constraints/>
                 <properties>

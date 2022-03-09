@@ -22,7 +22,9 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -39,6 +41,8 @@ public class App extends JFrame {
     private JButton lineButton;
     private JButton rectangleButton;
     private JButton moveButton;
+    private JButton ellipseButton;
+    private JButton circleButton;
 
     private JSlider thicknessSlider;
 
@@ -49,8 +53,7 @@ public class App extends JFrame {
     private JSlider fillRedSlider;
     private JSlider fillGreenSlider;
     private JSlider fillBlueSlider;
-    private JButton ellipseButton;
-    private JButton circleButton;
+    private JButton polygonButton;
 
     private Optional<Shape> currentShape = Optional.empty();
 
@@ -77,8 +80,7 @@ public class App extends JFrame {
     }
 
     @Bean
-    public Supplier<Optional<Shape>>
-    currentShapeSupplier() {
+    public Supplier<Optional<Shape>> currentShapeSupplier() {
         return () -> currentShape;
     }
 
@@ -119,13 +121,22 @@ public class App extends JFrame {
 
     @PostConstruct
     private void setUpGUI() {
-        segmentButton.addActionListener(e -> action = SEGMENT);
-        rayButton.addActionListener(e -> action = RAY);
-        lineButton.addActionListener(e -> action = LINE);
-        moveButton.addActionListener(e -> action = MOVE);
-        rectangleButton.addActionListener(e -> action = RECTANGLE);
-        ellipseButton.addActionListener(e -> action = ELLIPSE);
-        circleButton.addActionListener(e -> action = CIRCLE);
+        for (JButton b : Arrays.asList(
+                segmentButton,
+                rayButton,
+                lineButton,
+                moveButton,
+                rectangleButton,
+                ellipseButton,
+                circleButton,
+                polygonButton
+        )) {
+            ActionEnum action = valueOf(b.getText().toUpperCase(Locale.ROOT));
+            b.addActionListener(e -> {
+                this.action = action;
+                currentShapeConsumer().accept(null);
+            });
+        }
 
         frameRedSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
         frameGreenSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GREEN), "Green"));
