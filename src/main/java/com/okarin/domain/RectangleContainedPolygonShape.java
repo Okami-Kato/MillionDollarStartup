@@ -1,6 +1,6 @@
-package com.okarin.domain.impl;
+package com.okarin.domain;
 
-import com.okarin.domain.RectangleContainedShape;
+import com.okarin.domain.impl.Polygon;
 
 import java.awt.Color;
 import java.awt.Point;

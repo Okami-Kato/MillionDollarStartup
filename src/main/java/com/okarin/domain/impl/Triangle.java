@@ -1,5 +1,7 @@
 package com.okarin.domain.impl;
 
+import com.okarin.domain.RectangleContainedPolygonShape;
+
 import java.awt.Color;
 import java.awt.Point;
 import java.util.List;
