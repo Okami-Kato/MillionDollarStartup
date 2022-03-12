@@ -2,7 +2,7 @@ package com.okarin.action.adapters;
 
 import com.okarin.action.ActionEnum;
 import com.okarin.domain.Shape;
-import com.okarin.domain.impl.Polygon;
+import com.okarin.domain.impl.DynamicPolygon;
 import com.okarin.event.RepaintEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -48,10 +48,10 @@ public class PolygonAdapter extends MouseAdapter {
     public void mousePressed(MouseEvent e) {
         Optional<Shape> currentShape = currentShapeSupplier.get();
         if (currentAction.get() == ActionEnum.POLYGON) {
-            if (currentShape.isPresent() && currentShape.get().getClass().equals(Polygon.class)) {
-                ((Polygon) currentShape.get()).addPoint(e.getPoint());
+            if (currentShape.isPresent() && currentShape.get().getClass().equals(DynamicPolygon.class)) {
+                ((DynamicPolygon) currentShape.get()).addPoint(e.getPoint());
             } else {
-                Polygon polygon = new Polygon(e.getPoint(), frameThickness.get(), frameColor.get(), fillColor.get());
+                DynamicPolygon polygon = new DynamicPolygon(e.getPoint(), frameThickness.get(), frameColor.get(), fillColor.get());
                 shapes.add(polygon);
                 currentShapeConsumer.accept(polygon);
             }
@@ -63,7 +63,7 @@ public class PolygonAdapter extends MouseAdapter {
     public void mouseDragged(MouseEvent e) {
         Optional<Shape> currentShape = currentShapeSupplier.get();
         if (currentShape.isPresent() && currentAction.get() == ActionEnum.POLYGON) {
-            ((Polygon) currentShape.get()).setLastPoint(e.getPoint());
+            ((DynamicPolygon) currentShape.get()).setLastPoint(e.getPoint());
             repaintEventPublisher.publish();
         }
     }

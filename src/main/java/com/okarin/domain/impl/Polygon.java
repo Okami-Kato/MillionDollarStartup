@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Polygon extends Shape2D {
 
-    private List<Point> points;
+    protected List<Point> points;
 
     public Polygon(Point location, int frameWidth, Color frameColor, Color fillColor) {
         super(location, frameWidth, frameColor, fillColor);
@@ -23,19 +23,8 @@ public class Polygon extends Shape2D {
         this.points = new ArrayList<>(points);
     }
 
-    public void setPoints(List<Point> points){
+    protected void setPoints(List<Point> points){
         this.points = new ArrayList<>(points);
-    }
-
-    public void addPoint(Point point) {
-        points.add(point);
-        setLocation(computeCenter());
-    }
-
-    public void setLastPoint(Point point) {
-        points.remove(points.size() - 1);
-        points.add(point);
-        setLocation(computeCenter());
     }
 
     @Override
@@ -76,7 +65,7 @@ public class Polygon extends Shape2D {
         super.move(pt);
     }
 
-    private Point computeCenter() {
+    protected Point computeCenter() {
         double x = 0.;
         double y = 0.;
         int pointCount = points.size();
